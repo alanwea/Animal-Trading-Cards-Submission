@@ -1,0 +1,189 @@
+/*
+	Styles used for the Udacity FEWD Animal Trading Cards assigment.
+
+	Developed using Atom 1.22.1 x64, Chrome 62.0.3202.94, Paint.Net 4.0.19
+
+Alan Weatherhead
+Fall 2017
+
+	The assignment inferred that absolute measurements be used, so I used pixel
+	measurements throughout, except for text points, instead of percentages or
+	other responsive units.
+
+	I used the editing style that I am comfortable with, instead of what others
+	consider industry best practices.
+
+	I did not add in webkit prefix extensions; I spent enough time already getting
+	the card as close to pixel perfect as possible, without adding in possible
+	effects by other browsers.
+
+	I did not include "bullet-proofing" for future modifications, such as
+	different text lengths, after all this is an early assignment in the class.
+
+Methodology:
+
+	The animal image is required to have a width of 300px and not be responsive.
+
+	Comparing the image in the design prototype versus the target requirement
+	yields a proportion value of .667 as a reduction factor (66.7%).  There
+	will be some variation in pixel counts compared to the design prototype because of
+	rounding resulting from the applied reduction factor.
+
+	In the design prototype, measure relevant distances in pixels, and determine
+	grayscale values using Paint.net.
+
+	Enter measurements into an Excel spreadsheet and apply the reduction factor
+	to determine the measurements in the target card that correspond to the
+	300px image width requirement.
+
+	Determine the pixel adjustments for elements that contain padding or borders.
+
+	Apply adjustments for any contingencies effects.
+*/
+
+/* add your CSS here */
+
+/*
+	Prevent browser specific positioning overrides.
+	https://shapeshed.com/default-styles-for-css/
+*/
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+/*
+	<body> is used to represent the edge to edge dimensions of the design prototype.
+	Reduction size: 347px x 529px
+	Adjusted for padding: 324px x 506px
+
+	Could use box-sizing: border-box to dispense with the calculations
+	and use the actual dimensions
+*/
+body {
+
+/*
+	apply reduction factor minus padding.
+	516 x 788 * .667 = 344 x 525 - padding = 322 x 502
+*/
+	width: 322px;
+	height: 502px;
+	padding: 8px 15px 15px 8px; /* by measurement */
+
+	overflow: hidden; /* suppress the right side scroll bar */
+
+}
+
+/*
+	The outer edge of the card with right and bottom shadow.
+
+*/
+.card-outline {
+
+/*
+	482 x 755 * .667 = 321 x 504 - border + padding = 302, but
+	rounding required manual adjustment of 2px.
+*/
+	width: 300px;
+
+/* 502px measured height minus (top border (1px) + top padding(20px) +
+  bottom padding(10px) + bottom border(1px)) = 470
+*/
+	height: 470px;
+
+	border: 1px solid #d1d1d1;
+	padding: 21px 10px 10px 10px;
+
+	box-shadow: 5px 5px 5px #e6e6e6;
+}
+
+h3 {
+
+	margin-bottom: 16px; /* between name and image */
+
+/*
+	Determined by converting design-prototyp.png to a .pdf, then .pdf
+	to HTML, and examining the HTML source.  There are online services
+	that could do the same thing.
+*/
+	font-family: "Times New Roman", times, serif;
+	font-size: 14pt; /* could use ems, but assignment not required to be responsive */
+
+}
+
+/*
+	Image required to be 300px wide. Top positioning is provided
+	by the text bounding box margin.  Positioning on left and right
+	by the card-outline padding and border.
+*/
+.animal-image {
+
+	width: 300px; /* as specified in the assignment*/
+	height: 200px; /* as measured */
+	margin-bottom: 13px;  /* from image edge to animal-info border */
+}
+
+/*
+	By observation, the information box is the same width as the image, minus
+	padding and border.
+
+	Inside of the information box, there is an individually styled box
+	for each text element.
+*/
+.animal-info {
+
+	width: 280px; /* calculation adjusted by -1 for rounding error */
+
+/*
+	Negative top margin corrects a 5px horizontal white space that
+	has been reported, in several online articles and forums, as
+	a known problem corrected by negative margin
+*/
+	margin: -4px 0px 0px 0px;
+	padding: 14px 10px 22px 8px;
+
+	border: 1px solid #d1d1d1;
+
+
+	font-size: 9pt; /* will cascade to inner elements */
+	line-height: 14px;
+
+}
+
+/* "The beaver has scent glands"
+	Position of text box is controlled on T,R,L by animal-info padding.
+	Bottom positioning by length and font size of the text.
+*/
+.animal-fact {
+
+	margin: 0px 0px 14px 0px;
+
+	font-style: italic;
+	font-weight: normal;
+	text-decoration: none;
+
+}
+
+/* "Castor canadensis"
+*/
+.list-styling {
+
+	margin: 0px 0px 14px 0px;
+
+	list-style: none;
+
+}
+
+.listlabel {
+
+	font-weight: bold;
+
+}
+
+
+/* "The North American..."
+*/
+.animal-description {
+/* nothing defined */
+}
